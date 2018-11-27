@@ -2,15 +2,33 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>GIT & GITHUB</title>
+	<title>H5实验</title>
 	<style>
-		.green{
-			width:200px;
-			height:300px;
-			background: green;
+		.draped{
+			width:100px;
+			height:50px;
+			border:1px solid yellow;
 		}
 	</style>
+	<script>
+		function drag(ev) {
+			ev.dataTransfer.setData("Text",ev.target.id);
+		}
+
+		function allowDrag(ev ) {
+			ev.preventDefault();
+		}
+
+		function drop (ev) {
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("Text");
+			ev.target.appendChild(document.getElementById(data));
+		}
+
+	</script>
 </head>
 <body>
-	<div class="green"></div>
+	<div class= "draped" ondragover="allowDrag(event)" ondrop="drop(event)"></div>
+	<img id="bai" src="baidu.gif" alt="这是百度图片" width="100px;" draggable="true" ondragstart="drag(event)">
+	<div class="draped" ondragover="allowDrag(event)" ondrop="drop(event)"></div>
 </html>
